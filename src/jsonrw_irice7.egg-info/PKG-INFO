@@ -1,0 +1,16 @@
+Metadata-Version: 2.1
+Name: jsonrw_irice7
+Version: 0.0.1
+Summary: A small jsondb
+Author-email: "IRice7 (.afternoonee.)" <author@example.com>, ThatMG393 <thatmg393@gmail.com>
+Project-URL: Homepage, https://github.com/irice7/jsonrw
+Project-URL: Issues, https://github.com/irice7/jsonrw/issues
+Keywords: jsondb,json
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+
+# jsonrw
+small jsondb

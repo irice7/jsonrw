@@ -1,0 +1,53 @@
+name: "Auto-publish"
+
+on:
+  push:
+    branches: [ "pypi-package" ]
+    paths-ignore:
+      - '**.md'
+  pull_request:
+    branches: [ "pypi-package" ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4.1.1
+        with:
+          fetch-depth: 1
+
+      - name: Setup Python and build deps
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11.6'
+          cache: 'pip'
+         
+      - name: Compile
+        run: python3 -m build
+
+      - name: Upload dist 
+        uses: actions/upload-artifact@v4.3.0
+        with:
+          name: python-package-distributions
+          path: dist/
+
+  publish:
+    runs-on: ubuntu-latest
+    environment:
+      name: pypi
+      url: https://pypi.org/p/jsonrw
+      permissions:
+        id-token: write
+    steps:
+      - name: Download the dist
+        uses: actions/download-artifact@v3
+        with:
+          name: python-package-distributions
+          path: dist/
+
+      - name: Publish to PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
+
+

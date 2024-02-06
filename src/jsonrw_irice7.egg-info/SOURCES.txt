@@ -1,0 +1,10 @@
+README.md
+pyproject.toml
+src/jsonrw_irice7/__init__.py
+src/jsonrw_irice7/db.py
+src/jsonrw_irice7/jsonrw.py
+src/jsonrw_irice7/utils.py
+src/jsonrw_irice7.egg-info/PKG-INFO
+src/jsonrw_irice7.egg-info/SOURCES.txt
+src/jsonrw_irice7.egg-info/dependency_links.txt
+src/jsonrw_irice7.egg-info/top_level.txt

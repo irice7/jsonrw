@@ -1,0 +1,26 @@
+[project]
+name = "jsonrw_irice7"
+version = "0.0.1"
+authors = [
+	{ name="IRice7 (.afternoonee.)", email="author@example.com" },
+	{ name="ThatMG393", email="thatmg393@gmail.com" },
+]
+description = "A small jsondb"
+readme = "README.md"
+requires-python = ">=3.10"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+keywords = [
+	"jsondb", "json"
+]
+
+[project.urls]
+Homepage = "https://github.com/irice7/jsonrw"
+Issues = "https://github.com/irice7/jsonrw/issues"
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
