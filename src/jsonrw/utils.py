@@ -6,12 +6,14 @@ def load_json(filename: str) -> dict:
         with open(filename, 'r') as file:
             return json.load(file)
     except FileNotFoundError:
-        return { }
+        raise FileNotFoundError(f'File {filename} is not found')
 
 def save_json(filename: str, data: dict, **kwargs) -> None:
     with open(filename, 'w') as file:
         json.dump(data, file, **kwargs)
 
+"""Thatmg please explain this
+"""
 def parse_dot_separated_keys(current: dict, keys: str, value: Any = None) -> Union[object, None]:
     keys = keys.split('.')
     for key in keys[:-1]:
