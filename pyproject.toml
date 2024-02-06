@@ -1,5 +1,5 @@
 [project]
-name = "jsonrw_irice7"
+name = "jsonrw"
 version = "0.0.1"
 authors = [
 	{ name="IRice7 (.afternoonee.)", email="author@example.com" },
