@@ -1,0 +1,4 @@
+- Refactor more shit
+- Implement proper DB
+- Add mypy as static type checker
+- ...
