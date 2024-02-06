@@ -18,11 +18,13 @@ jobs:
         with:
           fetch-depth: 1
 
-      - name: Setup Python and build deps
+      - name: Setup Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.11.6'
           cache: 'pip'
+
+      - name: Install build
         run: pip install -r requirements.txt
          
       - name: Compile
