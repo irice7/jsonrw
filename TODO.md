@@ -1,11 +1,12 @@
 # Important thing
 ## Codebase
-- [-] Refactor more shit
+- [x] Refactor shit
+- [ ] Refactor shit v2
 - [ ] Add mypy as static type checker
-- [ ] Better software design
+- [x] Better software design
 
 ## Database
-- [-] Implement proper DB (no! [??])
+- [x] Implement proper DB (no! [??])
 - [ ] See if indexing have any performance difference with purely accessing dicts
 - [ ] Implement the journaling
 - [ ] Write the indexed json to disk
