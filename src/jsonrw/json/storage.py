@@ -1,4 +1,4 @@
-from typing import Any
+from typing import Any, Hashable
 from jsonrw import JsonRW, ListObj
 from error import QueryError
 
@@ -14,11 +14,12 @@ class JsonStorage():
     def index_json(self) -> None:
         for i, entry in enumerate(self.json):
             for key, value in entry.items():
-                if key not in self.indexed_json: self.indexed_json.new_dict(key)
-                try:
-                    if value in self.indexed_json[key]: continue
-                except TypeError: print("h")
-
+                if key not in self.indexed_json:
+                    self.indexed_json.new_dict(key)
+                # Maybe do this instead of catching TypeError?
+                if not isinstance(key, Hashable):
+                    if value in self.indexed_json[key]:
+                        continue
                 self.indexed_json.put(f"{key}.{value}", i)
 
         self.indexed_json.save()
@@ -34,8 +35,10 @@ class JsonStorage():
             return js.get_json().get(key)
         else:
             target_index = js.get_indexed_json().get(f"{key}.{value}") 
-            if target_index is None: raise QueryError("Key not found or has not been indexed")
-            else: return js.get_json().get(target_index)[key]
+            if target_index is None:
+                raise QueryError("Key not found or has not been indexed")
+            else:
+                return js.get_json().get(target_index)[key]
 
     def save(self) -> None:
         self.json.save()

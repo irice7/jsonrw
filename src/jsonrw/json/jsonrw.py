@@ -10,30 +10,40 @@ class DictObj:
         self.data[key] = { }
         o = DictObj(self.data[key], self.root) 
 
-        if self.root.auto_commit: self.root.save()
+        if self.root.auto_commit:
+            self.root.save()
         return o
 
     def new_list(self, key: str) -> "ListObj":
         self.data[key] = [ ] 
         o = ListObj(self.data[key], self.root)
 
-        if self.root.auto_commit: self.root.save()
+        if self.root.auto_commit:
+            self.root.save()
         return o
 
     def put(self, key: str, value: Any) -> "DictObj": 
-        if len(key.split(".")) != 1: utils.parse_dot_separated_keys(self.data, key, value=value)
-        else: self.data[key] = value
+        if len(key.split(".")) != 1:
+            utils.parse_dot_separated_keys(self.data, key, value=value)
+        else:
+            self.data[key] = value
         
-        if self.root.auto_commit: self.root.save()
+        if self.root.auto_commit:
+            self.root.save()
         return self
 
     def get(self, key: str) -> Self | "ListObj" | Any | None:
-        if len(key.split(".")) != 1: o = utils.parse_dot_separated_keys(self.data, key)
-        else: o = self.data[key]
+        if len(key.split(".")) != 1:
+            o = utils.parse_dot_separated_keys(self.data, key)
+        else:
+            o = self.data[key]
 
-        if isinstance(o, dict): return DictObj(o, self.root)
-        elif isinstance(o, list): return ListObj(o, self.root)
-        else: return o
+        if isinstance(o, dict):
+            return DictObj(o, self.root)
+        elif isinstance(o, list):
+            return ListObj(o, self.root)
+        else:
+            return o
 
     def __str__(self) -> str:
         return str(self.data)
@@ -78,17 +88,22 @@ class ListObj:
         return ListObj(o, self.root)
 
     def put(self, value: Any, index: int = None) -> "ListObj":
-        if index == None: index = int(len(self.data))
+        if index == None:
+            index = int(len(self.data))
         self.data.insert(index, value)
-        if self.root.auto_commit: self.root.save()
+        if self.root.auto_commit:
+            self.root.save()
 
         return self
 
     def get(self, index: int = None) -> "DictObj" | Self | Any | None:
         o = self.data[index]
-        if isinstance(o, dict): return DictObj(o, self.root)
-        elif isinstance(o, list): return ListObj(o, self.root)
-        else: return o 
+        if isinstance(o, dict):
+            return DictObj(o, self.root)
+        elif isinstance(o, list):
+            return ListObj(o, self.root)
+        else:
+            return o
 
     def __str__(self) -> str:
         return str(self.data)
@@ -123,8 +138,10 @@ class JsonRW:
         self.auto_commit: bool = auto_commit
         self.data: dict | list = data or utils.load_json(filename) 
         
-        if isinstance(self.data, dict): self.root = DictObj(self.data, self)
-        elif isinstance(self.data, list): self.root = ListObj(self.data, self)
+        if isinstance(self.data, dict):
+            self.root = DictObj(self.data, self)
+        elif isinstance(self.data, list):
+            self.root = ListObj(self.data, self)
 
         self._init_methods()
 
@@ -135,7 +152,8 @@ class JsonRW:
         self.get = self.root.get
     
     def save(self) -> None:
-        if self.filename is None: return
+        if self.filename is None:
+            return
         utils.save_json(self.filename, self.root.data, indent=4)
 
     def __str__(self) -> str:
