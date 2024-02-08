@@ -118,12 +118,10 @@ class ListObj:
 
 
 class JsonRW:
-    def __init__(self, filename: str = None, auto_commit: bool = False) -> None:
+    def __init__(self, filename: str = None, data: dict | list = None, auto_commit: bool = False) -> None:
         self.filename: str = filename
         self.auto_commit: bool = auto_commit
-        self.data: dict = utils.load_json(filename)
-
-        print(self.data)
+        self.data: dict | list = data or utils.load_json(filename) 
         
         if isinstance(self.data, dict): self.root = DictObj(self.data, self)
         elif isinstance(self.data, list): self.root = ListObj(self.data, self)
@@ -136,7 +134,7 @@ class JsonRW:
         self.put = self.root.put
         self.get = self.root.get
     
-    def commit(self) -> None:
+    def save(self) -> None:
         if self.filename is None: return
         utils.save_json(self.filename, self.root.data, indent=4)
 

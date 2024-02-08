@@ -1,5 +1,26 @@
 [
-    { "name": "Joe" },
-    { "name": "Bob" },
-	{ "name": "Jerome" }
+    {
+        "name": "Joe"
+    },
+    {
+        "name": "Bob"
+    },
+    {
+        "name": "Jerome"
+    },
+    {
+        "Jerome": 69
+    },
+    {
+        "Jerome": 69,
+        "age": {
+            "Uejejduud": 69420
+        }
+    },
+    {
+        "Jerome": 69,
+        "age": {
+            "Uejejduud": 69420
+        }
+    }
 ]

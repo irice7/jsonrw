@@ -6,6 +6,7 @@ def load_json(filename: str) -> dict:
         with open(filename, 'r') as file:
             return json.load(file)
     except (FileNotFoundError, TypeError):
+        # Possible issue: user wants [ ] instead of  { }
         return { } # Please dont raise FileNotFoundError again
         # We return an empty dictionary so even when the file 
         # doesnt exist we can still save it (basically an in-memory db temporarily)

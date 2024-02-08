@@ -9,7 +9,8 @@
 - [x] Implement proper DB (no! [??])
 - [ ] See if indexing have any performance difference with purely accessing dicts
 - [ ] Implement the journaling
-- [ ] Write the indexed json to disk
+- [x] Write the indexed json to disk
+- [ ] Improve indexing (breaks when theres nested dicts)
 - [ ] Add concurrency support
 
 # Useless

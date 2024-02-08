@@ -17,8 +17,11 @@ class Database:
     def put(self, index: int) -> None:
         self.storage.json.put(index)
 
+    def query(self, key, value) -> Any:
+        return self.storage.query(key, value)
+
     def commit(self) -> None:
-        self.storage.json.save(indent=4)
+        self.storage.save()
 
     def close(self) -> None:
         self.commit()
