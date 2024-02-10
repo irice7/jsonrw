@@ -1,8 +1,5 @@
 file(GLOB jsonrw_src "src/*" "include/*")
-add_library(JsonRW SHARED jsonrw_src)
-
+add_library(JsonRW SHARED ${jsonrw_src})
 target_include_directories(JsonRW PUBLIC include/)
 
-target_link_libraries(JsonRW
-	log
-)
+target_link_libraries(JsonRW PUBLIC nlohmann_json)
